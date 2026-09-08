@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PracticeTab</title>
+    <style>
+      html[data-locked='true']::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 9, 14, 0.82);
+        z-index: 99999;
+        pointer-events: none;
+      }
+
+      html[data-locked='true']::after {
+        content: '';
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        z-index: 100000;
+        width: clamp(220px, 40vw, 420px);
+        height: clamp(64px, 12vw, 120px);
+        transform: translate(-50%, -50%);
+        background-image: url('/PracticeTab_Logo_wide.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        pointer-events: none;
+      }
+
+      html[data-locked='true'] #startup-lock {
+        position: fixed;
+        inset: 0;
+        z-index: 100001;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+      }
+
+      html[data-locked='true'] #startup-lock::after {
+        content: '';
+        width: 72px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-size: 14px 14px, 14px 14px, 14px 14px;
+        background-position: 0 0, 29px 0, 58px 0;
+        background-image:
+          radial-gradient(circle, #5dd6a2 0 6px, transparent 7px),
+          radial-gradient(circle, #5dd6a2 0 6px, transparent 7px),
+          radial-gradient(circle, #5dd6a2 0 6px, transparent 7px);
+        transform: translateY(72px);
+        opacity: 0.35;
+        animation: lockDots 1.2s ease-in-out infinite;
+      }
+
+      @keyframes lockDots {
+        0% {
+          opacity: 0.25;
+          filter: brightness(0.9);
+        }
+        50% {
+          opacity: 0.9;
+          filter: brightness(1.2);
+        }
+        100% {
+          opacity: 0.35;
+          filter: brightness(0.95);
+        }
+      }
+    </style>
+    <script>
+      document.documentElement.setAttribute('data-locked', 'true');
+    </script>
+  </head>
+
+  <body>
+    <div id="startup-lock"></div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

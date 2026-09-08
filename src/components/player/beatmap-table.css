@@ -1,0 +1,167 @@
+/* Shared styles for beatmap editor tables */
+.bm-table-section {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.bm-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.bm-table-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.bm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+
+.bm-th {
+  text-align: left;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+}
+
+.bm-th--bar {
+  width: 22%;
+}
+
+.bm-th--bpm {
+  width: 22%;
+}
+
+.bm-th--timesig {
+  width: 30%;
+}
+
+.bm-th--actions {
+  width: 26%;
+}
+
+.bm-row {
+  transition: background 0.1s;
+}
+
+.bm-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.bm-row--new {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.bm-row--new:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.bm-cell {
+  padding: 5px 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.bm-cell--editing {
+  padding: 3px 6px;
+}
+
+.bm-cell--actions {
+  cursor: default;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.bm-cell-input {
+  width: 100%;
+  background: #0f1218;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 3px 6px;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+}
+
+.bm-cell-input--narrow {
+  width: 38px;
+  text-align: center;
+}
+
+.bm-timesig-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bm-timesig-sep {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.bm-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: inherit;
+  color: var(--text-muted);
+  transition:
+    background 0.1s,
+    color 0.1s;
+}
+
+.bm-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.bm-icon-btn--delete {
+  color: #d94f4f;
+}
+
+.bm-icon-btn--delete:hover {
+  background: rgba(217, 79, 79, 0.15);
+  color: #e36161;
+}
+
+.bm-icon-btn--save {
+  color: var(--accent);
+}
+
+.bm-icon-btn--save:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.bm-icon-btn--save:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.bm-confirm-inline {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}

@@ -1,0 +1,218 @@
+nav.nav-root {
+  width: 100% !important;
+}
+
+hr {
+  display: block;
+  border: 0;
+  height: 1px;
+  margin: 0.75rem 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent) 48.55%,
+    rgba(0, 0, 0, 0) 50%,
+    var(--accent) 51.45%,
+    var(--accent) 100%
+  );
+  background-size: 400% 100%;
+  background-position: 100% 0;
+  animation: appHrSweep 8s linear infinite;
+  opacity: 0.95;
+}
+
+@keyframes appHrSweep {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0% 0;
+  }
+}
+
+nav.nav-root > div {
+  width: 100% !important;
+}
+
+.top-nav {
+  padding: 0 !important;
+  border-bottom: 1px solid var(--border);
+}
+
+ul.nav-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+  list-style: none !important;
+  gap: 0 !important;
+}
+
+li.nav-item-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 1 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+a.nav-item {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 6px 0 0 0 !important;
+  height: 44px !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+a.nav-item svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+html,
+body,
+* {
+  scrollbar-color: var(--accent) transparent !important;
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  -webkit-appearance: none;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background-color: var(--accent) !important;
+  background: var(--accent) !important;
+  box-shadow: inset 0 0 0 999px var(--accent);
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.main-content,
+.player-pane,
+.library-main,
+.metronome-scale,
+.practice-page {
+  scrollbar-color: var(--accent) transparent !important;
+}
+
+.main-content::-webkit-scrollbar-thumb,
+.player-pane::-webkit-scrollbar-thumb,
+.library-main::-webkit-scrollbar-thumb,
+.metronome-scale::-webkit-scrollbar-thumb,
+.practice-page::-webkit-scrollbar-thumb {
+  background-color: var(--accent) !important;
+  box-shadow: inset 0 0 0 999px var(--accent);
+}
+
+a.nav-item.router-link-active,
+a.nav-item.router-link-exact-active {
+  border-bottom-color: var(--accent) !important;
+}
+
+html[data-locked='true']::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 9, 14, 0.82);
+  z-index: 99999;
+  pointer-events: auto;
+}
+
+html[data-locked='true']::after {
+  content: '';
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 100000;
+  width: clamp(220px, 40vw, 420px);
+  height: clamp(64px, 12vw, 120px);
+  transform: translate(-50%, -50%);
+  background-image: url('/PracticeTab_Logo_wide.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+html[data-locked='true'] #startup-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+}
+
+html[data-locked='true'] #startup-lock::after {
+  content: '';
+  width: 72px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-size:
+    14px 14px,
+    14px 14px,
+    14px 14px;
+  background-position:
+    0 0,
+    29px 0,
+    58px 0;
+  background-image:
+    radial-gradient(circle, var(--accent) 0 6px, transparent 7px),
+    radial-gradient(circle, var(--accent) 0 6px, transparent 7px),
+    radial-gradient(circle, var(--accent) 0 6px, transparent 7px);
+  transform: translateY(72px);
+  opacity: 0.35;
+  animation: lockDots 1.2s ease-in-out infinite;
+}
+
+@keyframes lockDots {
+  0% {
+    opacity: 0.25;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 0.9;
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 0.35;
+    filter: brightness(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  hr {
+    animation: none;
+    background-position: 0 0;
+  }
+}

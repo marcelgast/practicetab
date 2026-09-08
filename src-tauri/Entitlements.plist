@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        Required when the app is signed with Hardened Runtime
+        (`flags=runtime` in `codesign -dv`). Without this, macOS
+        blocks any AVCaptureDevice mic access at the bundle-level
+        sandbox check — TCC isn't even consulted, the app never
+        appears in System Settings → Privacy & Security → Microphone,
+        and `AVCaptureDevice.requestAccessForMediaType:` returns
+        `false` immediately. The Info.plist `NSMicrophoneUsageDescription`
+        is necessary but not sufficient under Hardened Runtime.
+
+        Reference:
+        https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_audio-input
+    -->
+    <key>com.apple.security.device.audio-input</key>
+    <true/>
+</dict>
+</plist>

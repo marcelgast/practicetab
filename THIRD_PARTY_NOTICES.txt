@@ -1,0 +1,92 @@
+Third-Party Notices for PracticeTab
+====================================
+
+PracticeTab bundles and depends on a number of third-party components. The
+list below is grouped by license family; each entry names the component,
+its license, and where to find its full license text.
+
+The PracticeTab source code itself is licensed under the MIT License — see
+`LICENSE`. This file records the licenses of everything else.
+
+--------------------------------------------------------------------------
+
+## MPL-2.0 (Mozilla Public License 2.0)
+
+Under MPL-2.0, source availability applies to modifications of these files
+specifically; the surrounding application does not have to inherit the
+license. Original source is available from each project's upstream.
+
+- @coderline/alphatab (v1.8.x)          Guitar Pro renderer + engine (JS)
+  https://github.com/CoderLine/alphaTab
+- symphonia (v0.5.x)                    Rust audio decoder framework
+  https://github.com/pdeljanov/Symphonia
+- dompurify (v3.x)                      Dual-licensed under MPL-2.0 OR Apache-2.0
+  https://github.com/cure53/DOMPurify
+
+## Apache-2.0
+
+- cpal (v0.15.x)                        Cross-platform audio I/O
+  https://github.com/RustAudio/cpal
+- SONiVOX EAS wavetable (SF2)           Bundled SoundFont for AlphaTab
+  Copyright 1993 Sonic Network, Inc. Redistributed as part of alphatab.
+  See https://github.com/CoderLine/alphaTab for the full attribution.
+
+## MIT
+
+Frontend:
+- Vue (v3.x)                            https://vuejs.org
+- Vue Router                            https://router.vuejs.org
+- Pinia                                 https://pinia.vuejs.org
+- Reka UI                               https://reka-ui.com
+- Chart.js                              https://www.chartjs.org
+- Marked                                https://github.com/markedjs/marked
+- @noble/hashes                         https://github.com/paulmillr/noble-hashes
+
+Rust (all dual-licensed as MIT OR Apache-2.0 unless noted):
+- rustysynth (v1.x)                     SoundFont-based MIDI synthesizer (MIT)
+- signalsmith-stretch (v0.1.x)          Time-stretch/pitch-shift (MIT)
+- pitch-detection (v0.3.x)              Pitch detection algorithms (MIT/Apache-2.0)
+- rusqlite (v0.31.x)                    SQLite bindings (MIT)
+- serde, serde_json                     Serialization framework (MIT/Apache-2.0)
+- tokio                                 Async runtime (MIT)
+- chrono                                Date/time library (MIT/Apache-2.0)
+- uuid                                  UUID generation (MIT/Apache-2.0)
+- base64                                Base64 encoding (MIT/Apache-2.0)
+- thiserror                             Error macro (MIT/Apache-2.0)
+- tauri, tauri-plugin-opener,           Cross-platform app framework (MIT/Apache-2.0)
+  tauri-plugin-dialog,
+  tauri-plugin-process
+- block2 (v0.6.x, macOS only)           Objective-C block bindings (MIT)
+- objc2, objc2-foundation               Objective-C runtime bindings (MIT)
+
+## ISC
+
+- lucide-vue-next                       Icon set (ISC)
+  https://lucide.dev
+
+## SIL Open Font License 1.1
+
+- Bravura                               SMuFL music-notation font
+  Bundled via `public/alphatab/Bravura.*`; used by alphatab for score
+  rendering. Copyright Steinberg Media Technologies GmbH.
+  https://github.com/steinbergmedia/bravura
+
+--------------------------------------------------------------------------
+
+## Own assets
+
+The metronome sample sets under `src-tauri/src/audio/metronome_samples/`
+(drum_kit, hype, metal_kit, ride_kit, tock) were recorded and produced
+by Marcel Gast. Signal-chain and plugin-chain notes are in
+`docs/METRONOME_SAMPLES.md`. These samples are released under the same
+MIT license as the source code, with the same trademark carve-out for
+the PracticeTab name and logo (see `LICENSE`).
+
+--------------------------------------------------------------------------
+
+Full license texts for each dependency are shipped in the respective
+package's `LICENSE` / `LICENSE.md` files inside `node_modules` (npm) and
+`~/.cargo/registry/src` (Rust). This notice serves as a directory; the
+authoritative texts stay with the packages themselves.
+
+If you spot an inaccuracy or a missing attribution, please open an issue.

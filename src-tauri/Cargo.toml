@@ -1,0 +1,100 @@
+[package]
+name = "PracticeTab"
+version = "1.5.0"
+description = "Cross-platform offline-first guitar practice desktop app"
+authors = ["Marcel Gast"]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/marcelgast/practicetab"
+readme = "../README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "tauri_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-process = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+tokio = { version = "1", features = ["sync"] }
+base64 = "0.22"
+chrono = { version = "0.4", features = ["clock"] }
+uuid = { version = "1", features = ["v4"] }
+cpal = "0.15"
+rustysynth = "^1"
+thiserror = "2"
+symphonia = { version = "0.5", features = ["mp3", "wav", "flac", "ogg", "vorbis", "pcm", "aac"] }
+signalsmith-stretch = "0.1"
+pitch-detection = "0.3"
+
+[dev-dependencies]
+tempfile = "3"
+
+[features]
+pitch_debug = []
+
+# macOS-only — needed for the native AVCaptureDevice microphone
+# permission API. Without an explicit status check + request the
+# system prompt never fires on installs that already have a TCC
+# entry from an earlier version, so users see "no signal" with no
+# way to fix it without manually opening System Settings.
+[target.'cfg(target_os = "macos")'.dependencies]
+# Versions aligned with what tauri/tao/rfd already pull in transitively.
+# Pinning to a different minor previously caused duplicate `block2` /
+# `objc2` copies in the dependency graph and the trait-bound conflict
+# `IntoBlock<...>` not being satisfied for our `RcBlock::new` closure
+# (compiler resolved against the 0.6 trait while our crate used 0.5).
+objc2 = "0.6"
+objc2-foundation = "0.3"
+block2 = "0.6"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

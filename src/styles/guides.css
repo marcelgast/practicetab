@@ -1,0 +1,153 @@
+/*
+ * Dark/accent theme overrides for driver.js.
+ *
+ * driver.js's default popover is light-grey with blue buttons —
+ * fine for a docs site, wrong for our dark shell. We restyle the
+ * popover chrome, spotlight, and buttons without forking the
+ * library.
+ *
+ * All selectors reference class names driver.js generates
+ * (`.driver-popover`, `.driver-popover-title`, etc. — see
+ * node_modules/driver.js/dist/driver.css). Keeping the overrides
+ * here rather than in a scoped component avoids `::v-deep` noise.
+ */
+
+.driver-overlay {
+  fill: #000;
+  fill-opacity: 0.55;
+}
+
+/*
+ * Visible frame around the currently-highlighted element. driver.js
+ * adds `.driver-active-element` to the DOM node under the spotlight
+ * cut-out, which lets us draw a ring without touching the library's
+ * SVG mask. `outline` is used instead of `border` so the ring sits
+ * outside the element's box and doesn't shift its layout, and
+ * `outline-offset` gives a small gap so the accent ring reads as a
+ * frame rather than a button state change.
+ */
+.driver-active-element {
+  outline: 2px solid var(--accent, #5dd6a2) !important;
+  outline-offset: 4px;
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent, #5dd6a2) 55%, transparent),
+    0 0 24px color-mix(in srgb, var(--accent, #5dd6a2) 40%, transparent);
+}
+
+.driver-popover {
+  background: var(--modal-surface, #11161f);
+  color: var(--text, #f5f5f7);
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  border-radius: 12px;
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  padding: 16px 18px;
+  max-width: 360px;
+}
+
+.driver-popover-title {
+  color: var(--text, #f5f5f7);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 6px;
+}
+
+.driver-popover-description {
+  color: var(--text-muted, #a8a8b3);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.driver-popover-footer {
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.driver-popover-progress-text {
+  color: var(--text-muted, #a8a8b3);
+  font-size: 0.75rem;
+}
+
+.driver-popover-navigation-btns {
+  gap: 8px;
+}
+
+/*
+ * Popover action buttons styled to match our BaseButton
+ * outline-accent variant (see src/components/ui/BaseButton.vue):
+ * transparent background, accent-colored border and text, soft
+ * accent-tinted hover fill. Matches the rest of the app's CTA
+ * language so the guide feels native, not like a tooltip library.
+ */
+.driver-popover-prev-btn,
+.driver-popover-next-btn {
+  background: transparent !important;
+  border: 1px solid var(--accent, #5dd6a2) !important;
+  color: var(--accent, #5dd6a2) !important;
+  padding: 6px 14px !important;
+  border-radius: 10px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  cursor: pointer;
+  text-shadow: none !important;
+  transition:
+    background 120ms ease,
+    color 120ms ease;
+}
+
+.driver-popover-prev-btn:hover,
+.driver-popover-next-btn:hover {
+  background: color-mix(
+    in srgb,
+    var(--accent, #5dd6a2) 12%,
+    transparent
+  ) !important;
+}
+
+.driver-popover-prev-btn:focus-visible,
+.driver-popover-next-btn:focus-visible {
+  outline: 2px solid var(--accent, #5dd6a2);
+  outline-offset: 2px;
+}
+
+/* The X in the popover header stays as a quiet ghost button — it
+ * doesn't need to shout "accent" because it's the escape hatch,
+ * not the primary CTA. */
+.driver-popover-close-btn {
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none !important;
+  color: var(--text-muted, #a8a8b3) !important;
+  background: transparent !important;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.driver-popover-close-btn:hover {
+  color: var(--text, #f5f5f7) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow {
+  border-top-color: var(--modal-surface, #11161f);
+}
+
+.driver-popover-arrow-side-bottom.driver-popover-arrow {
+  border-bottom-color: var(--modal-surface, #11161f);
+}
+
+.driver-popover-arrow-side-left.driver-popover-arrow {
+  border-left-color: var(--modal-surface, #11161f);
+}
+
+.driver-popover-arrow-side-right.driver-popover-arrow {
+  border-right-color: var(--modal-surface, #11161f);
+}
